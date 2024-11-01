@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfp15iumqq3dx"]
+
+[ext_resource type="Texture2D" uid="uid://dmm34n4ksblua" path="res://icon.svg" id="1_2eooe"]
+[ext_resource type="Script" path="res://player.gd" id="1_03lp8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ierhk"]
+size = Vector2(127, 124)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ugwf"]
+radius = 55.9948
+height = 177.956
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_03lp8")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_ierhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2eooe")
+
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(-2, -1)
+metadata/_edit_group_ = true
+
+[node name="ActionableFinder" type="Area2D" parent="Direction"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder"]
+position = Vector2(31, 0)
+rotation = 1.55718
+shape = SubResource("CapsuleShape2D_4ugwf")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 3
+offset_left = -52.0
+offset_top = -115.0
+offset_right = 50.0
+offset_bottom = -92.0
+text = "SPACE to talk"
+
+[connection signal="area_shape_entered" from="Direction/ActionableFinder" to="." method="_on_actionable_finder_area_shape_entered"]
+[connection signal="area_shape_exited" from="Direction/ActionableFinder" to="." method="_on_actionable_finder_area_shape_exited"]

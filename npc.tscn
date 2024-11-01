@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ycr5vyj8ygm"]
+
+[ext_resource type="Texture2D" uid="uid://dmm34n4ksblua" path="res://icon.svg" id="1_jjfbl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6o1ax"]
+size = Vector2(128, 129)
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jjfbl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_6o1ax")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0, 0, 1, 0.34902)

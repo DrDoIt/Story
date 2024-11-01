@@ -1,0 +1,18 @@
+~  start
+
+NPC: Hail Adventurer!
+if State.apple_status == "has"
+	Player: I have an apple
+	- Give to Nathan:
+		set State.apple_status = "gave"
+		Player: Here you go
+		Nathan: Thanks
+	- Keep it
+		Player: But it's mine
+		Nathan: Fair enough
+elif State.apple_status == "gave":
+	Nathan: Thanks again for the apple
+else:
+	Nathan: I sure wish I had an apple. Apparently there is a tree around here somewhere
+
+=> END

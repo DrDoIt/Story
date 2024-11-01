@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq5k8fih2ya1c"]
+
+[ext_resource type="PackedScene" uid="uid://b4ycr5vyj8ygm" path="res://npc.tscn" id="1_fsq2i"]
+[ext_resource type="PackedScene" uid="uid://h1roamotgaer" path="res://actionable.tscn" id="2_ipcys"]
+[ext_resource type="Resource" uid="uid://cki22oqx45prt" path="res://dialogue/dialogue.dialogue" id="3_pehcy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngtk7"]
+size = Vector2(125.33, 14.3011)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyq4v"]
+radius = 98.5548
+
+[node name="Map1" type="Node2D"]
+scale = Vector2(1.00861, 1.01402)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1089.0
+offset_bottom = 613.0
+scale = Vector2(4.19334, 1.01852)
+color = Color(0, 0.576471, 1, 1)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-1, 613)
+scale = Vector2(114.278, 12.3844)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.698039, 0.615686, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(20.0138, 19.6842)
+scale = Vector2(0.319088, 2.8)
+shape = SubResource("RectangleShape2D_ngtk7")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(0.782877, -1.87994)
+scale = Vector2(-3.70289, 27.595)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Wall"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.787759, 0.787759, 0.787759, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(20.0138, 20.0312)
+scale = Vector2(0.319088, 2.8)
+shape = SubResource("RectangleShape2D_ngtk7")
+
+[node name="NPC" parent="." instance=ExtResource("1_fsq2i")]
+position = Vector2(1147.12, 549.297)
+
+[node name="Actionable" parent="NPC" instance=ExtResource("2_ipcys")]
+dialogue_resource = ExtResource("3_pehcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Actionable"]
+shape = SubResource("CircleShape2D_dyq4v")
